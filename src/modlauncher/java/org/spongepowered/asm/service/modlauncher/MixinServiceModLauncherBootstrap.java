@@ -22,26 +22,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.asm.mixin;
+package org.spongepowered.asm.service.modlauncher;
 
-import org.spongepowered.asm.mixin.extensibility.IMixinConfig;
-import org.spongepowered.asm.mixin.injection.selectors.ISelectorContext;
+import org.spongepowered.asm.service.IMixinServiceBootstrap;
+import org.spongepowered.asm.service.ServiceInitialisationException;
 
-public class ModUtil extends FabricUtil {
-    public static final String OWNER_DECORATOR = "mixinOwner";
-    public static final String UNKNOWN_OWNER = "unknown-owner";
+import cpw.mods.modlauncher.Launcher;
 
-    public static String owner(IMixinConfig config) {
-        return owner(config, UNKNOWN_OWNER);
+/**
+ * Ain't nobody here 'cept us chickens...
+ */
+public class MixinServiceModLauncherBootstrap implements IMixinServiceBootstrap {
+
+    @Override
+    public String getName() {
+        return "ModLauncher";
     }
 
-    public static String owner(IMixinConfig config, String defaultValue) {
-        return FabricUtil.getDecoration(config, OWNER_DECORATOR, defaultValue);
+    @Override
+    public String getServiceClassName() {
+        return "org.spongepowered.asm.service.modlauncher.MixinServiceModLauncher";
     }
 
-    public static String owner(ISelectorContext context) {
-        return FabricUtil.getDecoration(FabricUtil.getConfig(context), OWNER_DECORATOR, UNKNOWN_OWNER);
+    @Override
+    public void bootstrap() {
+        try {
+            Launcher.INSTANCE.hashCode();
+        } catch (Throwable th) {
+            throw new ServiceInitialisationException(this.getName() + " is not available");
+        }
     }
 
-    public ModUtil() {}
 }

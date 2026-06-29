@@ -59,6 +59,7 @@ import org.spongepowered.asm.mixin.transformer.ext.Extensions;
 import org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException;
 import org.spongepowered.asm.service.IMixinService;
 import org.spongepowered.asm.service.MixinService;
+import org.spongepowered.asm.util.Lazy;
 import org.spongepowered.asm.util.VersionNumber;
 
 import com.google.common.base.Strings;

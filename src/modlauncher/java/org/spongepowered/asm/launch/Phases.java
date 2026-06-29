@@ -22,26 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.asm.mixin;
+package org.spongepowered.asm.launch;
 
-import org.spongepowered.asm.mixin.extensibility.IMixinConfig;
-import org.spongepowered.asm.mixin.injection.selectors.ISelectorContext;
+import java.util.EnumSet;
 
-public class ModUtil extends FabricUtil {
-    public static final String OWNER_DECORATOR = "mixinOwner";
-    public static final String UNKNOWN_OWNER = "unknown-owner";
+import cpw.mods.modlauncher.serviceapi.ILaunchPluginService.Phase;
 
-    public static String owner(IMixinConfig config) {
-        return owner(config, UNKNOWN_OWNER);
+/**
+ * Pre-built enumsets for returns
+ */
+public final class Phases {
+    
+    private Phases() {
     }
 
-    public static String owner(IMixinConfig config, String defaultValue) {
-        return FabricUtil.getDecoration(config, OWNER_DECORATOR, defaultValue);
-    }
+    public static final EnumSet<Phase> NONE = EnumSet.<Phase>noneOf(Phase.class);
+    public static final EnumSet<Phase> BEFORE_ONLY = EnumSet.<Phase>of(Phase.BEFORE);
+    public static final EnumSet<Phase> AFTER_ONLY = EnumSet.<Phase>of(Phase.AFTER);
 
-    public static String owner(ISelectorContext context) {
-        return FabricUtil.getDecoration(FabricUtil.getConfig(context), OWNER_DECORATOR, UNKNOWN_OWNER);
-    }
-
-    public ModUtil() {}
 }

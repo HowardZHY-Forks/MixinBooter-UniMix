@@ -23,32 +23,8 @@
  * THE SOFTWARE.
  */
 
-<<<<<<<< HEAD:src/main/java/org/spongepowered/asm/util/Lazy.java
-import java.util.function.Supplier;
-
-public final class Lazy {
-
-    public static Lazy of(Object value) {
-        return new Lazy(value);
-    }
-
-    private Object value;
-
-    private Lazy(Object value) {
-        this.value = value;
-    }
-
-    public <T> T get() {
-        if (value instanceof Supplier) {
-            value = ((Supplier) value).get();
-        }
-        return (T) value;
-    }
-
-========
 package org.spongepowered.include.com.google.common.base;
 
 // Dummy public class so that the module can declare a uses directive for it
 public interface PatternCompiler {
->>>>>>>> main:src/modularityDummy/java/org/spongepowered/include/com/google/common/base/PatternCompiler.java
 }

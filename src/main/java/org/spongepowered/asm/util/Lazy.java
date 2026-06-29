@@ -23,7 +23,8 @@
  * THE SOFTWARE.
  */
 
-<<<<<<<< HEAD:src/main/java/org/spongepowered/asm/util/Lazy.java
+package org.spongepowered.asm.util;
+
 import java.util.function.Supplier;
 
 public final class Lazy {
@@ -44,11 +45,4 @@ public final class Lazy {
         }
         return (T) value;
     }
-
-========
-package org.spongepowered.include.com.google.common.base;
-
-// Dummy public class so that the module can declare a uses directive for it
-public interface PatternCompiler {
->>>>>>>> main:src/modularityDummy/java/org/spongepowered/include/com/google/common/base/PatternCompiler.java
 }
